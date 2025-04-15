@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MyApplication" parent="Theme.AppCompat.DayNight.NoActionBar" />
+<style name="light_or_night">
+<item name="android:background">@color/white</item>
+<item name="android:tint">@color/red</item>
+<item name="android:textColor">@color/black</item>
+</style>
+<style name="button" parent="light_or_night">
+<item name="android:layout_width">match_parent</item>
+<item name="android:layout_height">wrap_content</item>
+<item name="android:textAllCaps">false</item>
+<item name="android:padding">16dp</item>
+<item name="android:gravity">left</item>
+<item name="android:orientation">vertical</item>
+</style>
+<style name="activity" parent="light_or_night">
+<item name="android:layout_width">match_parent</item>
+<item name="android:layout_height">match_parent</item>
+<item name="android:orientation">vertical</item>
+</style>
+<style name="first_line" parent="light_or_night">
+<item name="android:layout_width">match_parent</item>
+<item name="android:layout_height">wrap_content</item>
+<item name="android:textSize">16sp</item>
+</style>
+<style name="second_line" parent="light_or_night">
+<item name="android:layout_width">match_parent</item>
+<item name="android:layout_height">wrap_content</item>
+<item name="android:textSize">14sp</item>
+<item name="android:textColor">@color/lightgrey</item>
+</style>
+</resources>

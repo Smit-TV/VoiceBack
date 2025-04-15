@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+style="@style/activity">
+<CheckBox
+android:id="@+id/sound"
+android:text="@string/sound"
+style="@style/button"/>
+<LinearLayout
+android:id="@+id/sound_volume"
+style="@style/button">
+<TextView
+android:text="@string/sound_volume"
+style="@style/first_line"/>
+<TextView
+android:id="@+id/volume"
+android:text="...%"
+style="@style/second_line"/>
+</LinearLayout>
+<Button
+android:id="@+id/sound_theme"
+android:text="@string/sound_theme"
+style="@style/button"/>
+<CheckBox
+android:id="@+id/vibration"
+android:text="@string/vibration"
+style="@style/button"/>
+<Button
+android:id="@+id/vibration_theme"
+android:text="@string/vibration_theme"
+style="@style/button"/>
+</LinearLayout>

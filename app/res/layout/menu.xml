@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+style="@style/activity">
+<ListView
+android:id="@+id/list_view"
+android:layout_weight="1"
+style="@style/activity"/>
+<Button
+android:id="@+id/cancel"
+android:gravity="center_horizontal|center"
+android:text="@string/cancel"
+style="@style/button"/>
+</LinearLayout>

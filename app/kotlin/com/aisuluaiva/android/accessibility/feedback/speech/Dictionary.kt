@@ -1,0 +1,151 @@
+package com.aisuluaiva.android.accessibility.feedback.speech
+import com.aisuluaiva.android.accessibility.feedback.R
+
+object Dictionary {
+fun getSymbolDescriptionRes(symbol: String): Int? {
+    return when (symbol) {
+        "'" -> R.string.symbol_apostrophe
+        "&" -> R.string.symbol_ampersand
+        "<" -> R.string.symbol_angle_bracket_left
+        ">" -> R.string.symbol_angle_bracket_right
+        "*" -> R.string.symbol_asterisk
+        "@" -> R.string.symbol_at_sign
+        "\\" -> R.string.symbol_backslash
+        "\u2022" -> R.string.symbol_bullet
+        "^" -> R.string.symbol_caret
+        "\u00A2" -> R.string.symbol_cent
+        ":" -> R.string.symbol_colon
+        "," -> R.string.symbol_comma
+        "\u00A9" -> R.string.symbol_copyright
+        "{" -> R.string.symbol_curly_bracket_left
+        "}" -> R.string.symbol_curly_bracket_right
+        "\u00B0" -> R.string.symbol_degree
+        "\u00F7" -> R.string.symbol_division
+        "$" -> R.string.symbol_dollar_sign
+        "\u2026" -> R.string.symbol_ellipsis
+        "\u2014" -> R.string.symbol_em_dash
+        "\u2013" -> R.string.symbol_en_dash
+        "\u20AC" -> R.string.symbol_euro
+        "!" -> R.string.symbol_exclamation_mark
+        "`" -> R.string.symbol_grave_accent
+        "-" -> R.string.symbol_hyphen_minus
+        "\u201E" -> R.string.symbol_low_double_quote
+        "\u00D7" -> R.string.symbol_multiplication
+        "\n" -> R.string.symbol_new_line
+        "\u00B6" -> R.string.symbol_paragraph_mark
+        "(" -> R.string.symbol_parenthesis_left
+        ")" -> R.string.symbol_parenthesis_right
+        "%" -> R.string.symbol_percent
+        "." -> R.string.symbol_period
+        "\u03C0" -> R.string.symbol_pi
+        "#" -> R.string.symbol_pound
+        "\u00A3" -> R.string.symbol_pound_sterling
+        "\u20b1" -> R.string.symbol_currency_peso
+        "\u20AB" -> R.string.symbol_currency_dong
+        "?" -> R.string.symbol_question_mark
+        "\"" -> R.string.symbol_quotation_mark
+        "\u2122" -> R.string.symbol_registered_trademark
+        ";" -> R.string.symbol_semicolon
+        "/" -> R.string.symbol_slash
+        " " -> R.string.symbol_space
+        "[" -> R.string.symbol_square_bracket_left
+        "]" -> R.string.symbol_square_bracket_right
+        "\u221A" -> R.string.symbol_square_root
+        "\u2122" -> R.string.symbol_trademark // Обратите внимание на дублирование Unicode
+        "_" -> R.string.symbol_underscore
+        "|" -> R.string.symbol_vertical_bar
+        "\u00a5" -> R.string.symbol_yen
+        "\u00ac" -> R.string.symbol_not_sign
+        "\u00a6" -> R.string.symbol_broken_bar
+        "\u00b5" -> R.string.symbol_micro_sign
+        "\u2248" -> R.string.symbol_almost_equals
+        "\u2260" -> R.string.symbol_not_equals
+        "\u00a4" -> R.string.symbol_currency_sign
+        "\u00a7" -> R.string.symbol_section_sign
+        "\u2191" -> R.string.symbol_upwards_arrow
+        "\u2190" -> R.string.symbol_leftwards_arrow
+        "\u20B9" -> R.string.symbol_rupee
+        "\u2665" -> R.string.symbol_black_heart
+        "~" -> R.string.symbol_tilde
+        "=" -> R.string.symbol_equal
+        "\uFFE6" -> R.string.symbol_won
+        "\u203B" -> R.string.symbol_reference
+        "\u2606" -> R.string.symbol_white_star
+        "\u2605" -> R.string.symbol_black_star
+        "\u2661" -> R.string.symbol_white_heart
+        "\u25CB" -> R.string.symbol_white_circle
+        "\u25CF" -> R.string.symbol_black_circle
+        "\u2299" -> R.string.symbol_solar
+        "\u25CE" -> R.string.symbol_bullseye
+        "\u2667" -> R.string.symbol_white_club_suit
+        "\u2664" -> R.string.symbol_white_spade_suit
+        "\u261C" -> R.string.symbol_white_left_pointing_index
+        "\u261E" -> R.string.symbol_white_right_pointing_index
+        "\u25D0" -> R.string.symbol_circle_left_half_black
+        "\u25D1" -> R.string.symbol_circle_right_half_black
+        "\u25A1" -> R.string.symbol_white_square
+        "\u25A0" -> R.string.symbol_black_square
+        "\u25B3" -> R.string.symbol_white_up_pointing_triangle
+        "\u25BD" -> R.string.symbol_white_down_pointing_triangle
+        "\u25C1" -> R.string.symbol_white_left_pointing_triangle
+        "\u25B7" -> R.string.symbol_white_right_pointing_triangle
+        "\u25C7" -> R.string.symbol_white_diamond
+        "\u2669" -> R.string.symbol_quarter_note
+        "\u266A" -> R.string.symbol_eighth_note
+        "\u266C" -> R.string.symbol_beamed_sixteenth_note
+        "\u2640" -> R.string.symbol_female
+        "\u2642" -> R.string.symbol_male
+        "\u3010" -> R.string.symbol_left_black_lenticular_bracket
+        "\u3011" -> R.string.symbol_right_black_lenticular_bracket
+        "\u300C" -> R.string.symbol_left_corner_bracket
+        "\u300D" -> R.string.symbol_right_corner_bracket
+        "\u2192" -> R.string.symbol_rightwards_arrow
+        "\u2193" -> R.string.symbol_downwards_arrow
+        "\u00B1" -> R.string.symbol_plus_minus_sign
+        "\u2113" -> R.string.symbol_liter
+        "\u2103" -> R.string.symbol_celsius_degree
+        "\u2109" -> R.string.symbol_fahrenheit_degree
+        "\u2252" -> R.string.symbol_approximately_equals
+        "\u222B" -> R.string.symbol_integral
+        "\u27e8" -> R.string.symbol_mathematical_left_angle_bracket
+        "\u27e9" -> R.string.symbol_mathematical_right_angle_bracket
+        "\u3012" -> R.string.symbol_postal_mark
+        "\u25B2" -> R.string.symbol_black_triangle_pointing_up
+        "\u25BC" -> R.string.symbol_black_triangle_pointing_down
+        "\u25C6" -> R.string.symbol_black_suit_of_diamonds
+        "\uFF65" -> R.string.symbol_halfwidth_katakana_middle_dot
+        "\u25AA" -> R.string.symbol_black_smallsquare
+        "\u300A" -> R.string.symbol_left_angle_bracket // Left double angle bracket
+        "\u300B" -> R.string.symbol_right_angle_bracket // Right double angle bracket
+        "\u00A1" -> R.string.symbol_inverted_exclamation_mark
+        "\u00BF" -> R.string.symbol_inverted_question_mark
+        "\u20A9" -> R.string.symbol_won_sign
+        "\uFF0C" -> R.string.symbol_full_width_comma
+        "\uFF01" -> R.string.symbol_full_width_exclamation_mark
+        "\u3002" -> R.string.symbol_full_width_ideographic_full_stop
+        "\uFF1F" -> R.string.symbol_full_width_question_mark
+        "\u00B7" -> R.string.symbol_middle_dot
+        "\u201D" -> R.string.symbol_right_double_quotation_mark
+        "\u3001" -> R.string.symbol_ideographic_comma
+        "\uFF1A" -> R.string.symbol_full_width_colon
+        "\uFF1B" -> R.string.symbol_full_width_semicolon
+        "\uFF06" -> R.string.symbol_full_width_ampersand
+        "\uFF3E" -> R.string.symbol_full_width_circumflex
+        "\uFF5E" -> R.string.symbol_full_width_tilde
+        "\u201C" -> R.string.symbol_left_double_quotation_mark
+        "\uFF08" -> R.string.symbol_full_width_left_parenthesis
+        "\uFF09" -> R.string.symbol_full_width_right_parenthesis
+        "\uFF0A" -> R.string.symbol_full_width_asterisk
+        "\uFF3F" -> R.string.symbol_full_width_underscore
+        "\u2019" -> R.string.symbol_right_single_quotation_mark
+        "\uFF5B" -> R.string.symbol_full_width_left_curly_bracket
+        "\uFF5D" -> R.string.symbol_full_width_right_curly_bracket
+        "\uFF1C" -> R.string.symbol_full_width_less_than_sign
+        "\uFF1E" -> R.string.symbol_full_width_greater_than_sign
+        "\u2018" -> R.string.symbol_left_single_quotation_mark
+
+"\n" -> R.string.new_line
+        else -> null
+    }
+}
+}

@@ -1,0 +1,8 @@
+<com.aisuluaiva.android.widget.ItemView
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/text1"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:clickable="false"
+style="@style/light_or_night"
+/>

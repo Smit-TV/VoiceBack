@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+style="@style/activity">
+<Button
+android:id="@+id/tts_settings"
+android:text="@string/tts_settings"
+style="@style/button"/>
+<Button
+android:id="@+id/sound_and_vibration"
+android:text="@string/sound_and_vibration"
+style="@style/button"/>
+<Button
+android:id="@+id/gestures"
+android:text="@string/gestures"
+style="@style/button"/>
+<Button
+android:id="@+id/focus"
+android:text="@string/customize_focus"
+style="@style/button"/>
+<Button
+android:id="@+id/reading_controls"
+android:text="@string/customize_reading_controls"
+style="@style/button"/>
+<Button
+android:id="@+id/menu"
+android:text="@string/customize_menu"
+style="@style/button"/>
+<Button
+android:id="@+id/verbosity"
+android:text="@string/verbosity"
+style="@style/button"/>
+</LinearLayout>

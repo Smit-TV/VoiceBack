@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MyApplication" parent="Theme.AppCompat.DayNight.NoActionBar" />
+<style name="light_or_night">
+<item name="android:background">@color/grey</item>
+<item name="android:textColor">@color/white</item>
+<item name="android:tint">@color/red</item>
+</style>
+</resources>

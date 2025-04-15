@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+style="@style/activity">
+
+<LinearLayout
+android:id="@+id/current_engine"
+style="@style/button">
+<TextView
+android:text="@string/preferred_engine"
+style="@style/first_line"/>
+<TextView
+android:id="@+id/engine"
+android:text="..."
+style="@style/second_line"/>
+</LinearLayout>
+
+<LinearLayout
+android:id="@+id/speech_rate"
+style="@style/button">
+<TextView
+android:text="@string/speech_rate"
+style="@style/first_line"/>
+<TextView
+android:id="@+id/rate"
+android:text="..."
+style="@style/second_line"/>
+</LinearLayout>
+<TextView
+android:text="@string/spoken_language"
+android:accessibilityHeading="true"
+style="@style/first_line"/>
+<ListView
+android:id="@+id/languages"
+style="@style/button"/>
+
+</LinearLayout>

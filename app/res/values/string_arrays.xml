@@ -1,0 +1,109 @@
+<resources>
+<string-array name="events">
+<item>VoiceBack Is On</item>
+<item>VoiceBack is Off</item>
+<item>Super Node Focused</item>
+<item>Text focused</item>
+<item>Not Focused</item>
+<item>Move to another window</item>
+<item>Announcement</item>
+<item>Scroll</item>
+<item>Progress Changed</item>
+<item>Volume Limit</item>
+<item>End of text</item>
+<item>Start of system gesture</item>
+<item>End of system gesture</item>
+<item>Click</item>
+<item>Long click</item>
+<item>Navigation type changed</item>
+<item>Windows changed</item>
+<item>Text deleted</item>
+<item>Not editable</item>
+<item>Screen on</item>
+<item>Screen off</item>
+</string-array>
+<string-array name="sound_volume">
+<item>25%</item>
+<item>50%</item>
+<item>75%</item>
+<item>100%</item>
+</string-array>
+<string-array name="theme_resources">
+<item>@string/default_value</item>
+</string-array>
+<string-array name="gestures">
+    <item>Swipe Up</item>
+    <item>Swipe Right</item>
+    <item>Swipe Down</item>
+    <item>Swipe Left</item>
+    <item>Swipe Up Then Down</item>
+    <item>Swipe Down Then Up</item>
+    <item>Swipe Left Then Right</item>
+    <item>Swipe Right Then Left</item>
+    <item>Swipe Up Then Left</item>
+    <item>Swipe Up Then Right</item>
+    <item>Swipe Down Then Left</item>
+    <item>Swipe Down Then Right</item>
+    <item>Swipe Right Then Up</item>
+    <item>Swipe Right Then Down</item>
+    <item>Swipe Left Then Up</item>
+    <item>Swipe Left Then Down</item>
+    <item>Tap With 2 Fingers</item>
+    <item>Double-Tap with 2 Fingers</item>
+    <item>Double-Tap and Hold With 2 Fingers</item>
+    <item>Triple-Tap With 2 Fingers</item>
+    <item>Triple-Tap and Hold With 2 Fingers</item>
+    <item>Tap With 3 Fingers</item>
+    <item>Tap and Hold with 3 Fingers</item>
+    <item>Double-Tap With 3 Fingers</item>
+    <item>Double-Tap and Hold with 3 Fingers</item>
+    <item>Triple-Tap With 3 Fingers</item>
+    <item>Triple-Tap and Hold with 3 Fingers</item>
+    <item>Swipe Up with 3 Fingers</item>
+    <item>Swipe Right with 3 Fingers</item>
+    <item>Swipe Down with 3 Fingers</item>
+    <item>Swipe Left with 3 Fingers</item>
+    <item>Tap With 4 Fingers</item>
+    <item>Double-Tap With 4 Fingers</item>
+    <item>Double-Tap and Hold with 4 Fingers</item>
+    <item>Triple-Tap With 4 Fingers</item>
+    <item>Swipe Up with 4 Fingers</item>
+    <item>Swipe Right with 4 Fingers</item>
+    <item>Swipe Down with 4 Fingers</item>
+    <item>Swipe Left with 4 Fingers</item>
+</string-array>
+<string-array name="actions">
+    <item>Next Node</item>
+    <item>Previous Node</item>
+    <item>Notifications</item>
+    <item>Play/Pause Music</item>
+    <item>Back</item>
+    <item>Home</item>
+    <item>Overview</item>
+    <item>Increase Volume</item>
+    <item>Decrease Volume</item>
+    <item>Next Track</item>
+    <item>Previous Track</item>
+<item>Screen Backlight</item>
+<item>Next navigation type</item>
+<item>Previous navigation type</item>
+<item>Next element</item>
+<item>Previous element</item>
+<item>@string/quick_menu</item>
+<item>@string/tap</item>
+<item>@string/tap_and_hold</item>
+<item>@string/pass_through_system_gesture</item>
+<item>@string/next_voice_language</item>
+<item>@string/previous_voice_language</item>
+<item>@string/increase_speech_rate</item>
+<item>@string/decrease_speech_rate</item>
+<item>@string/selection</item>
+<item>@string/copy</item>
+<item>@string/cut</item>
+<item>@string/select_all</item>
+<item>@string/move_cursor_to_start</item>
+<item>@string/move_cursor_to_end</item>
+<item>@string/paste</item>
+<item>Language menu</item>
+</string-array>
+</resources>

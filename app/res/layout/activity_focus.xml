@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+style="@style/activity">
+
+<LinearLayout
+android:id="@+id/focus_color"
+style="@style/button">
+<TextView
+android:text="@string/focus_color"
+style="@style/first_line"/>
+<TextView
+android:id="@+id/color"
+android:text="@string/color_blue"
+style="@style/second_line"/>
+</LinearLayout>
+
+<LinearLayout
+android:id="@+id/focus_thickness"
+style="@style/button">
+<TextView
+android:text="@string/focus_thickness"
+style="@style/first_line"/>
+<TextView
+android:id="@+id/thickness"
+android:text="0%"
+style="@style/second_line"/>
+<CheckBox
+android:id="@+id/move_to_another_window"
+android:text="@string/move_to_another_window"
+style="@style/button"/>
+</LinearLayout>
+</LinearLayout>
