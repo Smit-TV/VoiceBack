@@ -8,7 +8,8 @@ import com.aisuluaiva.android.accessibility.feedback.overlay.ActionsMenu
 import com.aisuluaiva.android.accessibility.feedback.speech.TTS
 
 class DoubleTapNav(private val service: FeedbackService,
-private val tts: TTS) {
+private val tts: TTS,
+private val feedbackManager: FeedbackManager) {
 fun getFocusedNode(): AccessibilityNodeInfo? {
 return service.findFocus(AccessibilityNodeInfo.FOCUS_ACCESSIBILITY)
 }
@@ -64,6 +65,7 @@ actions.remove(actions[currentActionPosition])
 }
 currentAction = actions[getIndex(currentActionPosition, actions.size, forward)]
 tts.speak(currentAction.label ?: "")
+feedbackManager.onEvent(FeedbackManager.EVENT_NAV_TYPE_CHANGED)
 }
 fun links(forward: Boolean) {
 val linkList = LinksMenu.getClickableSpans(getFocusedNode() ?: return)
@@ -89,5 +91,6 @@ text.substring(spanStart, spanEnd)
 ""
 }
 tts.speak(link)
+feedbackManager.onEvent(FeedbackManager.EVENT_NAV_TYPE_CHANGED)
 }
 }

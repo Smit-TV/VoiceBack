@@ -1,6 +1,7 @@
 package com.aisuluaiva.android.accessibility.feedback.vibration
 import android.content.Context
 import android.os.Vibrator
+import android.os.VibrationEffect
 import android.util.Log
 
 /**
@@ -16,7 +17,9 @@ const val TAG = "VibrationManager"
 }
 fun vibrate(time: Long) {
 if (vibrator.hasVibrator() && time > 0) {
-vibrator.vibrate(time)
+val effect = VibrationEffect.createOneShot(time, 157)
+//VibrationEffect.DEFAULT_AMPLITUDE)
+vibrator.vibrate(effect)
 } else {
 Log.i(TAG, "Device hasn't got a vibrator.")
 }

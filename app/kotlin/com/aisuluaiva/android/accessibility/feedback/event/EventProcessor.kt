@@ -4,6 +4,7 @@ import android.os.PowerManager
 import android.view.accessibility.AccessibilityEvent
 import com.aisuluaiva.android.accessibility.feedback.FeedbackManager
 import com.aisuluaiva.android.accessibility.feedback.FeedbackService
+import com.aisuluaiva.android.accessibility.feedback.AppConstants
 import com.aisuluaiva.android.accessibility.feedback.speech.TTS
 
 /**
@@ -13,6 +14,7 @@ class EventProcessor(private val tts: TTS,
 private val feedbackManager: FeedbackManager,
 private val service: FeedbackService) {
 private val powerManager = service.getSystemService(Context.POWER_SERVICE) as PowerManager
+private val prefs = service.getSharedPreferences(AppConstants.SHARED_PREFERENCES, Context.MODE_PRIVATE)
 private val eventTypeViewHoverEnter = EventTypeViewHoverEnter(tts, feedbackManager)
 private val eventTypeViewAccessibilityFocused = EventTypeViewAccessibilityFocused(tts, feedbackManager, service)
 private val eventTypeTouchInteractionStart = EventTypeTouchInteractionStart()
@@ -23,7 +25,7 @@ private val eventTypeWindowContentChanged = EventTypeWindowContentChanged(tts, f
 private val eventTypeAnnouncement = EventTypeAnnouncement(tts, feedbackManager)
 private val eventTypeViewScrolled = EventTypeViewScrolled(tts, feedbackManager)
 private val eventTypeViewTextTraversedMovementGranularity = EventTypeViewTextTraversedMovementGranularity(tts, feedbackManager, service)
-private val eventTypeWindowStateChanged = EventTypeWindowStateChanged(tts, feedbackManager)
+private val eventTypeWindowStateChanged = EventTypeWindowStateChanged(tts, feedbackManager, prefs)
 private val eventTypeWindowsChanged = EventTypeWindowsChanged(tts, feedbackManager, service) 
 private val eventTypeNotificationStateChanged = EventTypeNotificationStateChanged(tts, feedbackManager)
 private val eventTypeTouchExplorationGestureStart = EventTypeTouchExplorationGestureStart()

@@ -30,8 +30,13 @@ AccessibilityEvent.CONTENT_CHANGE_TYPE_ERROR -> contentChangeTypeError(node ?: r
 AccessibilityEvent.CONTENT_CHANGE_TYPE_CONTENT_DESCRIPTION -> contentChangeTypeContentDescription(node ?: return, queueMode)
 AccessibilityEvent.CONTENT_CHANGE_TYPE_STATE_DESCRIPTION -> contentChangeTypeStateDescription(node ?: return, queueMode)
 AccessibilityEvent.CONTENT_CHANGE_TYPE_ENABLED -> contentChangeTypeEnabled(node ?: return, queueMode)
+AccessibilityEvent.CONTENT_CHANGE_TYPE_SUBTREE -> subtree(event)
 
 }
+}
+fun subtree(event: AccessibilityEvent) {
+val node = event.source ?: return
+//tts.speak(node.paneTitle ?: return, TTS.QUEUE_ADD)
 }
 
 fun isInternalNode(node: AccessibilityNodeInfo): Boolean {

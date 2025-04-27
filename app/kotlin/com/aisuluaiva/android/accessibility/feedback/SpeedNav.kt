@@ -12,8 +12,9 @@ class SpeedNav(private val worker: Worker,
 private val prefs: SharedPreferences,
 private val tts: TTS) {
 private val service = worker.service
-private val doubleTapNav = DoubleTapNav(service, tts)
+
 private val feedbackManager = worker.feedbackManager
+private val doubleTapNav = DoubleTapNav(service, tts, feedbackManager)
 init {
 instance = this
 service.addGestureListener { gesture ->

@@ -77,8 +77,8 @@ service.setTouchExplorationPassthroughRegion(displayId, Region())
 feedbackManager.onEvent(FeedbackManager.EVENT_SYSTEM_GESTURE_DETECTION_END)
 }
 }
-service.addAccessibilityEventListener(l)
 service.setTouchExplorationPassthroughRegion(displayId, region)
+service.addAccessibilityEventListener(l)
 feedbackManager.onEvent(FeedbackManager.EVENT_SYSTEM_GESTURE_DETECTION_START)
 }
 companion object {

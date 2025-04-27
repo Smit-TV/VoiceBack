@@ -24,6 +24,8 @@ skippedNode = null
 }
 }
 fun handle(event: AccessibilityEvent) {
+countDownTimer?.cancel()
+skippedNode = null
 val node = event.source ?: return
 val view = if (node.isAccessibilityFocusable) node else node.logicParent ?: run {
 // I don't know :(
@@ -33,9 +35,7 @@ return
 }
 countDownTimer?.cancel()
 skippedNode = node
-//Thread {
-try {
-countDownTimer = object : CountDownTimer(15, 1) {
+countDownTimer = object : CountDownTimer(3, 1) {
 override fun onTick(timeAfter: Long) {}
 override fun onFinish() {
 if (skippedNode == node) {
@@ -43,10 +43,6 @@ feedbackManager.onEvent(FeedbackManager.EVENT_NOT_FOCUSABLE_NODE)
 }
 }
 }.start()
-}  catch (e: Throwable) {
-tts.speak("$e")
-}
-//}.start()
 lastNode = node
 return
 }

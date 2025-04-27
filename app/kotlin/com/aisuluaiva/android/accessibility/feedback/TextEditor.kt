@@ -1,8 +1,14 @@
 package com.aisuluaiva.android.accessibility.feedback
+import android.content.ClipData
+import android.content.Context
+import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.accessibility.AccessibilityNodeInfo
+import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
 import com.aisuluaiva.android.accessibility.extensions.isEditText
 import com.aisuluaiva.android.accessibility.feedback.speech.TTS
+import com.aisuluaiva.android.accessibility.feedback.speech.Compositor
 
 class TextEditor(private val service: FeedbackService,
 private val feedbackManager: FeedbackManager,
@@ -10,6 +16,8 @@ private val tts: TTS) {
 companion object {
 var isSelectionEnabled = false
 }
+private val am = service.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+private val clipboardManager = service.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 private fun getFocusedNode(): AccessibilityNodeInfo? {
 return service.findFocus(AccessibilityNodeInfo.FOCUS_ACCESSIBILITY)
 }
@@ -18,7 +26,20 @@ val node = getFocusedNode() ?: return false
 return node.isEditText
 }
 fun copy() {
-getFocusedNode()?.performAction(AccessibilityNodeInfo.ACTION_COPY)
+val result = getFocusedNode()?.performAction(AccessibilityNodeInfo.ACTION_COPY) == true
+if (result) {
+successfulCopied()
+return
+}
+val text = Compositor(service, null, getFocusedNode() ?: return).getText(0)
+val clip = ClipData.newPlainText("label", text)
+clipboardManager.setPrimaryClip(clip)
+successfulCopied()
+}
+fun successfulCopied() {
+val event = AccessibilityEvent(AccessibilityEvent.TYPE_ANNOUNCEMENT)
+event.text.add(service.getString(R.string.copied_to_clipboard))
+am.sendAccessibilityEvent(event)
 }
 fun paste() {
 val node = getFocusedNode() ?: return

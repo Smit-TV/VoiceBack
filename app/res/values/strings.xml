@@ -1,7 +1,7 @@
 <resources>
 <string name="app_name">VoiceBack</string>
-<string name="service_summary">Sound and Vibration</string>
-<string name="service_description">Set sounds and vibration for your screen reader!</string>
+<string name="service_summary">Screen reader</string>
+<string name="service_description">Your personal screen reader!</string>
 <string name="service_enabled">VoiceBack On</string>
 <string name="service_disabled">VoiceBack off</string>
 <string name="state_collapsed">Collapsed.</string>
@@ -127,4 +127,5 @@
 <string name="links">Links</string>
 <string name="action_show_screen">Show screen</string>
 <string name="action_hide_screen">Hide screen</string>
+<string name="copied_to_clipboard">Copied to clipboard</string>
 </resources>

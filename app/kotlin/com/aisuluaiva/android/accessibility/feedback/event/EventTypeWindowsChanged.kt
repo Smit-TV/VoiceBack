@@ -3,6 +3,7 @@ import android.content.Context
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 import android.view.accessibility.AccessibilityWindowInfo
+import com.aisuluaiva.android.accessibility.utils.PackageUtils
 import com.aisuluaiva.android.accessibility.feedback.AppConstants
 import com.aisuluaiva.android.accessibility.feedback.FeedbackService
 import com.aisuluaiva.android.accessibility.feedback.FeedbackManager
@@ -24,12 +25,15 @@ fun handle(event: AccessibilityEvent) {
 val windowChanges = event.windowChanges
 val windowId = event.windowId
 val window = service.findWindowById(windowId) ?: return
-mWindow = window
-if (!window.isActive) {
+//mWindow = window
+if (!window.isActive
+|| event.eventTime - (EventTypeWindowStateChanged.lastEvent?.eventTime ?: 0) < 200) {
 return
 }
-lastEvent = event
-val title = window.title ?: return
+val appName = if (window.type == AccessibilityWindowInfo.TYPE_APPLICATION) {
+PackageUtils.getAppName(service, event.packageName ?: window.root?.packageName ?: "")
+} else { null }
+val title = window.title ?: appName ?: return
 when (windowChanges) {
 AccessibilityEvent.WINDOWS_CHANGE_TITLE,
 AccessibilityEvent.WINDOWS_CHANGE_ADDED -> {
@@ -37,6 +41,8 @@ if (prefs.getBoolean(AppConstants.PREFS_SPEAK_PANE_TITLES_BOOL, true)) {
 tts.speak(title, 1)
 }
 feedbackManager.onEvent(event.eventType)
+mWindow = window
+lastEvent = event
 }
 
 

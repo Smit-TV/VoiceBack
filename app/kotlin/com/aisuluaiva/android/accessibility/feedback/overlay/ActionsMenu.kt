@@ -30,7 +30,7 @@ return actions
 fun getActions(node: AccessibilityNodeInfo): List<AccessibilityNodeInfo.AccessibilityAction> {
 val actions = mutableListOf<AccessibilityNodeInfo.AccessibilityAction>()
 for (action in node.actionList) {
-if (action.label != null) {
+if (action.label != null && action.id != AccessibilityNodeInfo.ACTION_CLICK) {
 actions.add(action)
 }
 }

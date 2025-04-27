@@ -84,7 +84,7 @@ val soundTheme = findViewById<Button>(R.id.sound_theme)
 soundTheme.setOnClickListener {
 val dialogView = layoutInflater.inflate(R.layout.dialog_theme, null)
 val event = dialogView.findViewById<Spinner>(R.id.event)
-val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, 
+val adapter = ArrayAdapter(this, R.layout.menu_item, 
 resources.getStringArray(R.array.events))
 event.adapter = adapter
 
@@ -189,6 +189,7 @@ vibrationIntensity.setLayoutParams(LinearLayout.LayoutParams(
 LinearLayout.LayoutParams.MATCH_PARENT,
 0.5f))
 soundBar.addView(vibrationIntensity)
+val intensityRes = dialogView.findViewById<Spinner>(R.id.resource)
 val play = dialogView.findViewById<CheckBox>(R.id.play)
 play.text = getString(R.string.disable)
 
@@ -196,7 +197,7 @@ play.text = getString(R.string.disable)
 var currentEvent = -1
 var eventKey = "VIBRATION_${FeedbackManager.eventTypeToString(currentEvent)}"
 val eventItems = resources.getStringArray(R.array.events)
-val eventAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, eventItems)
+val eventAdapter = ArrayAdapter(this, R.layout.menu_item, eventItems)
 val event = dialogView.findViewById<Spinner>(R.id.event)
 event.adapter = eventAdapter
 
@@ -206,26 +207,47 @@ currentEvent = eventIds[position]
 eventKey = "VIBRATION_${FeedbackManager.eventTypeToString(currentEvent)}"
 val vibrationTime = prefs.getLong(eventKey, FeedbackManager.getIntensityByEventType(currentEvent))
 vibrationIntensity.setProgress(vibrationTime.toInt())
+intensityRes.setSelection(vibrationTime.toInt())
 play.isChecked = vibrationTime < -1
 }
 override fun onNothingSelected(adapter: AdapterView<*>){}
 })
 
-val progress = prefs.getLong(eventKey, FeedbackManager.getIntensityByEventType(currentEvent)).toInt()
+var progress = prefs.getLong(eventKey, FeedbackManager.getIntensityByEventType(currentEvent)).toInt()
 if (progress < -1) {
 vibrationIntensity.setEnabled(false)
 }
 vibrationIntensity.setProgress(progress)
 vibrationIntensity.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+override fun onProgressChanged(seekBar: SeekBar, mProgress: Int, fromUser: Boolean) {
 if (!fromUser) {
 return 
 }
-editor.putLong(eventKey, progress.toLong()).apply()
+editor.putLong(eventKey, mProgress.toLong()).apply()
+progress = mProgress
+intensityRes.setSelection(mProgress)
 play.isChecked = false
 }
 override fun onStartTrackingTouch(seekBar: SeekBar) {}
 override fun onStopTrackingTouch(seekbar: SeekBar) {}
+})
+val intensityItems = Array(101) { it.toString() + "%" }
+intensityRes.adapter = ArrayAdapter(this, R.layout.menu_item, intensityItems)
+if (progress > -1) {
+intensityRes.setSelection(progress.toInt())
+} else {
+intensityRes.setSelection(0)
+}
+intensityRes.setEnabled(vibrationIntensity.isEnabled)
+intensityRes.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+override fun onItemSelected(adapterView: AdapterView<*>, view: View, position: Int, id: Long) {
+if (progress < -1) {
+return
+}
+editor.putLong(eventKey, position.toLong()).apply()
+vibrationIntensity.setProgress(position)
+}
+override fun onNothingSelected(adapter: AdapterView<*>){}
 })
 val dialog = AlertDialog.Builder(this, R.style.activity)
 .setTitle(R.string.vibration_theme)
@@ -240,11 +262,15 @@ dialog.dismiss()
 play.isChecked = prefs.getLong(eventKey, FeedbackManager.getIntensityByEventType(currentEvent)) < -1
 play.setOnCheckedChangeListener { _, isChecked ->
 vibrationIntensity.setEnabled(isChecked != true)
+intensityRes.setEnabled(isChecked != true)
 if (isChecked) {
 editor.putLong(eventKey, -2)
+progress = -2
 vibrationIntensity.setProgress(0)
+intensityRes.setSelection(0)
 } else {
 editor.remove(eventKey)
+progress = 0
 }
 editor.apply()
 } 

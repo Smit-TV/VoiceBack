@@ -3,6 +3,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Build
 import android.view.Menu
 import android.view.View
 import android.widget.LinearLayout
@@ -33,6 +34,11 @@ popup.menu.add(0, i, 0, i.toString())
 }
 popup.setOnMenuItemClickListener { menuItem ->
 editor.putInt(AppConstants.PREFS_FOCUS_THICKNESS_INT, sizes[menuItem.getItemId()]).apply()
+
+if (Build.VERSION.SDK_INT > 30) {
+FeedbackService?.instance?.setAccessibilityFocusAppearance(prefs.getInt(AppConstants.PREFS_FOCUS_THICKNESS_INT, 20),
+prefs.getInt(AppConstants.PREFS_FOCUS_COLOR_INT, Color.BLUE))
+}
 thickness.text = "${prefs.getInt(AppConstants.PREFS_FOCUS_THICKNESS_INT, 20)}%"
 false
 }
@@ -51,6 +57,11 @@ getString(getColorR(colors[i])))
 popup.setOnMenuItemClickListener { menuItem ->
 val c = colors[menuItem.getItemId()]
 editor.putInt(AppConstants.PREFS_FOCUS_COLOR_INT, c).apply()
+
+if (Build.VERSION.SDK_INT > 30) {
+FeedbackService?.instance?.setAccessibilityFocusAppearance(prefs.getInt(AppConstants.PREFS_FOCUS_THICKNESS_INT, 20),
+prefs.getInt(AppConstants.PREFS_FOCUS_COLOR_INT, Color.BLUE))
+}
 color.text = getFocusColorName()
 false
 }

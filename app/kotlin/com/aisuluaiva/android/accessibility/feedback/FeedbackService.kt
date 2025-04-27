@@ -34,6 +34,7 @@ private lateinit var prefs: SharedPreferences
 private lateinit var receiver: FeedbackReceiver
 private val accessibilityEventListeners = mutableListOf<OnAccessibilityEventListener>()
 companion object {
+var instance: FeedbackService? = null
 const val TAG = "FeedbackService"
 lateinit var res: Resources
 val gestureIds = listOf(
@@ -83,6 +84,7 @@ val gestureIds = listOf(
 override fun onServiceConnected() {
 super.onServiceConnected()
 res = resources
+instance = this
 val info = serviceInfo
 info.flags = (info.flags
 or AccessibilityServiceInfo.FLAG_REQUEST_MULTI_FINGER_GESTURES
@@ -130,10 +132,6 @@ eventProcessor.handle(event)
 Thread {
 sendAccessibilityEvent(event)
 }.start()
-if (Build.VERSION.SDK_INT > 30) {
-setAccessibilityFocusAppearance(prefs.getInt(AppConstants.PREFS_FOCUS_THICKNESS_INT, 20),
-prefs.getInt(AppConstants.PREFS_FOCUS_COLOR_INT, Color.BLUE))
-}
 }
 fun sendAccessibilityEvent(event: AccessibilityEvent) {
 for (l in accessibilityEventListeners) {

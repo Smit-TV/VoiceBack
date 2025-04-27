@@ -11,6 +11,7 @@ import android.util.Log
 class SoundManager(private val context: Context) {
 private val audioAttributes = AudioAttributes.Builder()
 .setUsage(AudioAttributes.USAGE_ASSISTANCE_ACCESSIBILITY)
+.setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
 .build()
 private val soundPool = SoundPool.Builder()
 .setMaxStreams(10)

@@ -3,6 +3,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.view.accessibility.AccessibilityEvent
 import android.speech.tts.TextToSpeech
 import android.speech.tts.TextToSpeech.OnInitListener
@@ -51,14 +52,16 @@ if (isLanguageSupportedStatus == TextToSpeech.LANG_MISSING_DATA
 tts.setLanguage(Locale.ENGLISH)
 }
 } 
-val audioAttributes = AudioAttributes.Builder()
+var audioAttributes = AudioAttributes.Builder()
 .setUsage(AudioAttributes.USAGE_ASSISTANCE_ACCESSIBILITY)
-.build()
-tts.setAudioAttributes(audioAttributes)
+.setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+if (Build.VERSION.SDK_INT > 31) {
+audioAttributes = audioAttributes.setIsContentSpatialized(true)
+}
+tts.setAudioAttributes(audioAttributes.build())
 tts.setOnUtteranceProgressListener(this)
 tts.setSpeechRate(prefs.getFloat(AppConstants.PREFS_SPEECH_RATE_FLOAT, 2f))
-
-speak(initPhrase)
+speak(initPhrase, TextToSpeech.QUEUE_ADD)
 }
 override fun onError(utteranceId: String, errorCode: Int) {}
 override fun onError(utteranceId: String) {}
@@ -98,13 +101,6 @@ charName?.let {
 speak(charName)
 return
 }
-/*if (text == " ") {
-speak(R.string.space)
-return
-} else if (text == "\n") {
-speak(R.string.new_line)
-return
-}*/
 }
 val stringProcessor = StringProcessor(text, TextToSpeech.getMaxSpeechInputLength(), utteranceId).getStrArray()
 for (str in stringProcessor) {
